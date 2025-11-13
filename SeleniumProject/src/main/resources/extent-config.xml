@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- Report Title -->
+        <reportName>Automation Test Report</reportName>
+
+        <!-- Document Title -->
+        <documentTitle>Extent Spark Report - Test Execution Summary</documentTitle>
+
+        <!-- Theme Options: STANDARD or DARK -->
+        <theme>DARK</theme>
+
+        <!-- Encoding -->
+        <encoding>utf-8</encoding>
+
+        <!-- Protocol Options: http, https -->
+        <protocol>https</protocol>
+
+        <!-- Chart location (top, bottom) -->
+        <chartLocation>bottom</chartLocation>
+
+        <!-- Display order of charts -->
+        <chartVisibilityOnOpen>true</chartVisibilityOnOpen>
+
+        <!-- Timestamp format -->
+        <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+
+        <!-- Custom CSS -->
+        <css>
+            body {
+                font-family: 'Segoe UI', sans-serif;
+            }
+            .brand-logo {
+                color: #4CAF50 !important;
+                font-weight: bold;
+            }
+        </css>
+
+        <!-- Custom JavaScript -->
+        <js>
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log("Extent Spark Report Loaded Successfully!");
+            });
+        </js>
+    </configuration>
+</extentreports>
