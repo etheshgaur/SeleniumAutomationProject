@@ -1,6 +1,7 @@
 package PageClasses;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -49,9 +50,13 @@ public class IMDB__HomePage extends CommonMethods{
 	public void fetchGenre() {
 		
 		
-		for (WebElement element : genre) {
-		    System.out.println(element.getText());
+		List<String> values = new ArrayList<>();
+
+		for (WebElement val : genre) {
+		    values.add(val.getText());
 		}
+
+		System.out.println("Genre" + " - " + values);
 	}
 	
 	
