@@ -2,6 +2,7 @@ package StepDefinition;
 
 import PageClasses.IMDB__HomePage;
 import Utilities.DriverClass;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
@@ -21,4 +22,11 @@ public void user_search_for_series(String string) {
 public void user_fetch_rating() throws InterruptedException {
 	home.fetchRating();
 }
+
+@When("user fetch Genre")
+public void user_fetch_genre() {
+   home.fetchGenre();
+}
+
+
 }

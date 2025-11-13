@@ -26,6 +26,7 @@ public class CommonMethods extends DriverClass{
 		WebDriver driver =	getDriver();
 		driver.get("https://www.imdb.com/");
 	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+	    driver.manage().window().maximize();
 	}
 	
 	

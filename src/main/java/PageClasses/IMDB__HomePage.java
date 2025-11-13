@@ -16,8 +16,10 @@ public class IMDB__HomePage extends CommonMethods{
 	
 	@FindBy(xpath="//input[@id='suggestion-search']")
 	WebElement searchBox;
-	@FindBy(xpath="//div[@class='sc-4dc495c1-2 jaffDQ']")
+	@FindBy(xpath="//span[@class='sc-4dc495c1-1 lbQcRY']")
 	List<WebElement> rating;
+	@FindBy(xpath="//a[@class='ipc-chip ipc-chip--on-baseAlt']")
+	List<WebElement> genre;
 	
 	public IMDB__HomePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -40,9 +42,17 @@ public class IMDB__HomePage extends CommonMethods{
 	}
 	
 	public void fetchRating() throws InterruptedException {
-		 getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
-         System.out.println(rating.size());
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 		System.out.println(rating.get(0).getAttribute("innerText"));
 	}
+	
+	public void fetchGenre() {
+		
+		
+		for (WebElement element : genre) {
+		    System.out.println(element.getText());
+		}
+	}
+	
 	
 }
