@@ -28,5 +28,21 @@ public void user_fetch_genre() {
    home.fetchGenre();
 }
 
+@And("user fetch the Star cast")
+public void fetch_user_starcast() {
+	
+	home.fetchStar();
+}
+
+@And("user fetch Year Released for movie {string}")
+public void fetch_year_released(String movie) {
+	home.fetchYear(movie);
+}
+
+@And("user fetch duration for movie {string}")
+public void fetch_duration(String movie) {
+	home.duration(movie);
+}
+
 
 }

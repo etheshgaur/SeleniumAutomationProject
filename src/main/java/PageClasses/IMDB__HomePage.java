@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,12 +16,18 @@ import Utilities.CommonMethods;
 
 public class IMDB__HomePage extends CommonMethods{
 	
+	
 	@FindBy(xpath="//input[@id='suggestion-search']")
 	WebElement searchBox;
 	@FindBy(xpath="//span[@class='sc-4dc495c1-1 lbQcRY']")
 	List<WebElement> rating;
 	@FindBy(xpath="//a[@class='ipc-chip ipc-chip--on-baseAlt']")
 	List<WebElement> genre;
+	@FindBy(xpath="//div[@class='ipc-metadata-list-item__content-container']")
+	List<WebElement> starCast;
+	@FindBy(xpath="/c")
+	List<WebElement> yearReleased;
+	
 	
 	public IMDB__HomePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -42,6 +49,25 @@ public class IMDB__HomePage extends CommonMethods{
 		ele.click();
 	}
 	
+	public void fetchYear(String name) {
+		By loc = By.xpath(String.format("//span[text()='%s']//following::a[@class='ipc-link ipc-link--baseAlt ipc-link--inherit-color']", name));
+		
+		List<WebElement> ele = getDriver().findElements(loc);
+		String yearReleased= ele.get(0).getText();
+		System.out.println("Year Released" + " - " + yearReleased);
+	}
+	
+	
+	public void duration(String name) {
+		By loc = By.xpath("//li[@role='presentation' and contains(@class,'ipc-inline-list__item')]");
+		
+		List<WebElement> ele = getDriver().findElements(loc);
+		String dur= ele.get(7).getText();
+		System.out.println("Duration" + " - " + dur);
+		
+	}
+	
+	
 	public void fetchRating() throws InterruptedException {
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 		System.out.println(rating.get(0).getAttribute("innerText"));
@@ -57,6 +83,12 @@ public class IMDB__HomePage extends CommonMethods{
 		}
 
 		System.out.println("Genre" + " - " + values);
+	}
+	
+	public void fetchStar() {
+		
+		String star = starCast.get(1).getText();
+		System.out.println("Star Cast" + " - " + star);
 	}
 	
 	
