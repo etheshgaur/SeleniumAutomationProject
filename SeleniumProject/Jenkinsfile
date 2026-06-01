@@ -1,29 +1,30 @@
 pipeline {
     agent any
 
-    tools {
+   tools {
         maven 'Maven3'
+        jdk 'JDK17'
     }
 
     stages {
 
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/etheshgaur/SeleniumAutomationProject.git'
+                checkout scm
             }
         }
 
-        stage('Build & Test') {
+        stage('Execute Tests') {
             steps {
-                bat 'mvn clean test -Dcucumber.filter.tags="@test"'
+                bat 'mvn clean test'
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'target/**/*'
+            archiveArtifacts artifacts: 'PDFs/*.pdf', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'target/screenshots/*.png', allowEmptyArchive: true
         }
     }
 }
