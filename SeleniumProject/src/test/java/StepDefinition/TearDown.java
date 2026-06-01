@@ -15,18 +15,13 @@ import io.cucumber.java.Scenario;
 	public class TearDown extends CommonMethods {
 		public static Properties prop;
 
-		@BeforeAll(order=0)
-		public static void driverOpen() throws Exception {
-			 prop= CommonMethods.getProp();
-			startDriver(prop.getProperty("browser"));
-			
-		}
-		
-		
-		@BeforeAll(order=0)
-		public static void openURL() throws Exception {
-			LoadURL();
-			
+		@BeforeAll
+		public static void setUp() throws Exception {
+		    prop = CommonMethods.getProp();
+
+		    startDriver(prop.getProperty("browser"));
+
+		    LoadURL();
 		}
 		
 		@AfterAll
